@@ -49,7 +49,7 @@ The script installs system packages such as OpenMPI, Python 3.12, and mpi4py.
 Once the setup is complete, run your distributed training with the following command:
 
 ```
-mpirun -n <number_of_processes> --hostfile config/hostfile python3 training/ParallelTrain.py
+mpiexec --allow-run-as-root --oversubscribe -n 6 --hostfile /path/HyperMPI/config/hostfile  python3 /path/HyperMPI/training/ParallelTrain.py
 ```
 
 # Contributing
