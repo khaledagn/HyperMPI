@@ -43,7 +43,7 @@ The setup script will help you create a hostfile, specifying IP addresses and sl
 Easily configure SSH keys to enable secure, password-less communication between hosts.
 
 * Install Required Packages
-The script installs system packages such as OpenMPI, Python 3.12, and mpi4py.
+The script installs system packages such as OpenMPI, Python, and mpi4py.
 
 * Run Distributed Training
 Once the setup is complete, run your distributed training with the following command:
