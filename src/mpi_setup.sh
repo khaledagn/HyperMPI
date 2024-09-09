@@ -53,20 +53,21 @@ create_host_file() {
   display_banner
   echo "Creating MPI host file..."
 
-  # ensure the config directory exists in the project folder
-  project_dir="$(dirname "$PWD")"
-  config_dir="$project_dir/config"
+  # get the absolute path of the project folder
+  PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
+  CONFIG_DIR="$PROJECT_DIR/config"
 
-  if [ ! -d "$config_dir" ]; then
-    mkdir -p "$config_dir"
-    echo "Created missing config directory at $config_dir."
+  # ensure the config directory exists
+  if [ ! -d "$CONFIG_DIR" ]; then
+    mkdir -p "$CONFIG_DIR"
+    echo "Created missing config directory."
   fi
 
   # remove existing hostfile if it exists
-  hostfile="$config_dir/hostfile"
-  if [ -f "$hostfile" ]; then
+  HOSTFILE="$CONFIG_DIR/hostfile"
+  if [ -f "$HOSTFILE" ]; then
     echo "Removing existing hostfile..."
-    rm -f "$hostfile"
+    rm -f "$HOSTFILE"
   fi
 
   read -p "Enter the number of hosts (minimum 2): " num_hosts
@@ -95,17 +96,18 @@ create_host_file() {
         echo "Invalid slots number. Please enter a valid number."
       fi
     done
-    echo "$ip_address slots=$slots" >> "$hostfile"
+    echo "$ip_address slots=$slots" >> "$HOSTFILE"
   done
 
   # validate if the hostfile was created and not empty
-  if [ -s "$hostfile" ]; then
-    echo "MPI host file created successfully at $hostfile"
+  if [ -s "$HOSTFILE" ]; then
+    echo "MPI host file created successfully at $HOSTFILE"
   else
     echo "Error: MPI host file was not created or is empty."
     exit 1
   fi
 }
+
 
 
 
