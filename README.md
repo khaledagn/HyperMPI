@@ -5,9 +5,13 @@ HyperMPI is an automated system designed to set up distributed machine learning 
 ## Features
 
 🚀 Automated Multi-Host Setup: Easily configure SSH keys and MPI for distributed computing.
+
 🔧 OpenMPI Installation: Handles OpenMPI installation across multiple hosts.
+
 🐍 Python Environment: Automated Python environment setup with mpi4py and tensorflow.
+
 📦 Customizable Host Files: Flexible multi-host configurations for training scalability.
+
 📂 Project Auto-Download: Downloads and configures project files from GitHub.
 
 
