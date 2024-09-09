@@ -1,0 +1,10 @@
+# Example MPI hostfile
+# This file defines the hosts (IP addresses or hostnames) and the number of slots (processes) to use on each host.
+# Replace the IP addresses or hostnames with your actual setup.
+
+# Format:
+# <host> slots=<number_of_slots>
+
+127.0.0.1 slots=4    # Localhost with 4 slots
+192.168.1.10 slots=2 # Remote host with 2 slots
+192.168.1.11 slots=2 # Another remote host with 2 slots
