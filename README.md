@@ -45,6 +45,12 @@ Easily configure SSH keys to enable secure, password-less communication between 
 * Install Required Packages
 The script installs system packages such as OpenMPI, Python, and mpi4py.
 
+* Test Distributed Training
+Test your MPI setup with the following command:
+```
+chmod +x tests/test_integration.sh && ./tests/test_integration.sh
+```
+
 * Run Distributed Training
 Once the setup is complete, run your distributed training with the following command:
 
