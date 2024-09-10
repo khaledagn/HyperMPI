@@ -22,6 +22,10 @@ display_banner() {
 # display the banner
 display_banner
 
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
+CONFIG_DIR="$PROJECT_DIR/config"
+HOSTFILE="$CONFIG_DIR/hostfile"
+
 # validate ip address
 validate_ip() {
   local ip=$1
@@ -118,9 +122,7 @@ setup_ssh_keys() {
   echo "Setting up SSH keys..."
 
   # read host IP addresses
-  PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
-  CONFIG_DIR="$PROJECT_DIR/config"
-  HOSTFILE="$CONFIG_DIR/hostfile"
+  
   mapfile -t hosts < <(awk '{print $1}' $HOSTFILE)
 
 
@@ -179,7 +181,7 @@ setup_github_project() {
 create_host_file
 setup_ssh_keys
 
-mapfile -t hosts < <(awk '{print $1}' ../config/hostfile)
+mapfile -t hosts < <(awk '{print $1}' $HOSTFILE)
 
 for host in "${hosts[@]}"; do
   display_banner
