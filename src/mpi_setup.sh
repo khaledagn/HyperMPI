@@ -118,7 +118,11 @@ setup_ssh_keys() {
   echo "Setting up SSH keys..."
 
   # read host IP addresses
-  mapfile -t hosts < <(awk '{print $1}' ../config/hostfile)
+  PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
+  CONFIG_DIR="$PROJECT_DIR/config"
+  HOSTFILE="$CONFIG_DIR/hostfile"
+  mapfile -t hosts < <(awk '{print $1}' $HOSTFILE)
+
 
   # remove existing SSH keys and generate new ones on all hosts
   for ip_address in "${hosts[@]}"; do
